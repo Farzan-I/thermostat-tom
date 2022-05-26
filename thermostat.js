@@ -29,7 +29,22 @@ class Thermostat {
   setPowerSavingMode(bool) {
     this.mode = bool
   }
+
+  reset(){
+    this.temp = 20
+  }
+
+  getEnergyUsage() {
+    if (this.temp < 18) {
+      return 'Low usage';
+    } else if (this.temp <= 25) {
+      return 'Medium usage';
+    } else if (this.temp) {
+      return 'High usage';
+    }
+  }  
 }
+
 
 
 

@@ -53,4 +53,37 @@ describe('thermostat', () => {
     })
   })
 
+  describe('reset mode', () => {
+    it('resets the temperature to 20 degrees', () => {
+      const thermostat = new Thermostat();
+      for (let i = 0 ; i < 7 ; i++) {
+        thermostat.up();
+      }
+      thermostat.reset();
+      expect(thermostat.getTemperature()).toEqual(20)
+    })
+  })
+
+  describe('energy usage', () => {
+    it('checks the energy usage of the thermostat is medium', () => {
+      const thermostat = new Thermostat();
+      expect(thermostat.getEnergyUsage()).toBe('Medium usage')
+    })
+    it('checks the energy usage of the thermostat is low', () => {
+      const thermostat = new Thermostat();
+      for (let i = 0 ; i < 10 ; i++) {
+        thermostat.down();
+      }
+
+      expect(thermostat.getEnergyUsage()).toBe('Low usage')
+    })
+    it('checks the energy usage of the thermostat is high', () => {
+      const thermostat = new Thermostat();
+      thermostat.setPowerSavingMode(false);
+      for (let i = 0 ; i < 20 ; i++) {
+        thermostat.up();
+      }
+      expect(thermostat.getEnergyUsage()).toBe('High usage')
+    })
+  })
 })
