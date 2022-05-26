@@ -10,6 +10,13 @@ class Thermostat {
   up(){
     this.temp += 1;
   }
+  down(){
+    if (this.temp <= 10) {
+      this.temp = 10;
+    } else {
+      this.temp -= 1;
+    }
+  }
 }
 
 
