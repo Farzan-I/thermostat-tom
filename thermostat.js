@@ -9,18 +9,12 @@ class Thermostat {
   }
 
   up(){
-    if (this.mode === true) {
-      if (this.temp >= 25) {
-        this.temp = 25;
-      } else {
-        this.temp += 1;
-      }
+    if (this.mode === true && this.temp >= 25) {
+      this.temp = 25;
+    } else if (this.temp >= 32)  {
+      this.temp = 32;
     } else {
-      if (this.temp >= 32) {
-        this.temp = 32;
-      } else {
-        this.temp += 1;
-      }
+      this.temp += 1;
     }
   }
 
